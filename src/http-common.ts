@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export default axios.create({
-  baseURL: "https://trenapp2.azurewebsites.net",
+  baseURL: "https://api-tren.azurewebsites.net",
   headers: {
     "Content-type": "application/json"
   }
