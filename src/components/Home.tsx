@@ -71,7 +71,7 @@ const TutorialsList: React.FC = () => {
         {/* <h1>TREN APP</h1> */}
     <div className="container-fluid text-left">
     <div className="row">
-      <div className="col-md-12">
+      <div className="col-md-12 sticky-top pt-3">
         <div className="input-group">
         
         <div className="input-group-append">
