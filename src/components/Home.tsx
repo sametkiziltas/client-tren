@@ -21,11 +21,11 @@ const TutorialsList: React.FC = () => {
     if(e.keyCode === 13){
       const word = (e.target as HTMLInputElement).value;
       setText(word);
-      if(word != "" && word.length > 1 && isLetter(word)){
+      if(word !== "" && word.length > 1 && isLetter(word)){
         WordService.search(word, language)
         .then((response: any) => {
           setSearchResults(response.data);
-          console.log(response.data);
+          
         })
         .catch((e: Error) => {
           console.log(e);
@@ -39,11 +39,11 @@ const TutorialsList: React.FC = () => {
     setSearchResults([]);
     let lan = language === "tr" ? "en": "tr"
     setLanguage(lan);
-    if(word != "" && word.length > 1 && isLetter(word)){
+    if(word !== "" && word.length > 1 && isLetter(word)){
       WordService.search(word, lan)
       .then((response: any) => {
         setSearchResults(response.data);
-        console.log(response.data);
+        
       })
       .catch((e: Error) => {
         console.log(e);
@@ -52,11 +52,11 @@ const TutorialsList: React.FC = () => {
   };
 
   const getResult = () => {
-    if(word != "" && word.length > 1 && isLetter(word)){
+    if(word !== "" && word.length > 1 && isLetter(word)){
       WordService.search(word, language)
         .then((response: any) => {
           setSearchResults(response.data);
-          console.log(response.data);
+          
         })
         .catch((e: Error) => {
           console.log(e);
