@@ -1,6 +1,7 @@
 import React, { useState, useEffect, ChangeEvent, KeyboardEvent } from "react";
 import WordService from "../services/WordService"
 import IWordService from '../types/Word';
+import TextToSpeech from "../text-to-speech";
 
 const TutorialsList: React.FC = () => {
   const [searchResults, setSearchResults] = useState<Array<IWordService>>([]);
@@ -71,7 +72,7 @@ const TutorialsList: React.FC = () => {
         {/* <h1>TREN APP</h1> */}
     <div className="container-fluid text-left">
     <div className="row">
-      <div className="col-md-12 sticky-top pt-3">
+      <div className="col-md-9 sticky-top pt-3">
         <div className="input-group">
         
         <div className="input-group-append">
@@ -93,6 +94,7 @@ const TutorialsList: React.FC = () => {
             onChange={onChangeText}
             onKeyDown={handleKeyDown}
           />
+
           <div className="input-group-append">
             <button
               className="btn btn-primary"
@@ -104,16 +106,18 @@ const TutorialsList: React.FC = () => {
           </div>
         </div>
       </div>
+      <div className="col-md-3 sticky-top pt-3">
+        <div className="input-group">
+      <TextToSpeech text={word} language={""} />
+      </div>
+      </div>
+
+
       
       <div className="col-md-12">
         {searchResults.length > 0 && 
         <table className="table table-bordered">
         <thead>
-            {/* <tr>
-            <th scope="col">Category</th>
-            <th scope="col">Result</th> 
-
-            </tr> */}
         </thead>
 
         {searchResults &&
@@ -123,6 +127,7 @@ const TutorialsList: React.FC = () => {
                 <td>{result.category}</td>
                 {language === "en" ? <td>{result.turkish}</td> :  ""} 
                 {language === "tr" ?  <td>{result.english}</td> :  ""} 
+                <td className="allign-right"><TextToSpeech text={language === "en" ? result.turkish : result.english} language={language} /></td>
                 </tr>
             </tbody>
             
@@ -130,7 +135,7 @@ const TutorialsList: React.FC = () => {
     </table>
         }
       </div>
-     
+
     </div>
     </div>
     </div>
