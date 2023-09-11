@@ -25,13 +25,13 @@ const TextToSpeech = ({ text, language}) => {
   }, [text]);
 
   const handlePlayTR = () => {
-
     const synth = window.speechSynthesis;
 
     if (isPaused) {
       synth.resume();
     } else {
-      utterance.voice = voices[0];
+      const v = voices.find((element) => element.voiceURI === "Yelda");
+      utterance.voice = v;
       utterance.pitch = pitch;
       utterance.rate = rate;
       utterance.volume = volume;
@@ -44,11 +44,12 @@ const TextToSpeech = ({ text, language}) => {
   const handlePlayUK = () => {
 
     const synth = window.speechSynthesis;
+    const v = voices.find((element) => element.voiceURI === "Google UK English Female");
 
     if (isPaused) {
       synth.resume();
     } else {
-      utterance.voice = voices[145];
+      utterance.voice = v;
       utterance.pitch = pitch;
       utterance.rate = rate;
       utterance.volume = volume;
@@ -61,11 +62,12 @@ const TextToSpeech = ({ text, language}) => {
   const handlePlayUS = () => {
 
     const synth = window.speechSynthesis;
+    const v = voices.find((element) => element.voiceURI === "Google US English");
 
     if (isPaused) {
       synth.resume();
     } else {
-      utterance.voice = voices[144];
+      utterance.voice = v;
       utterance.pitch = pitch;
       utterance.rate = rate;
       utterance.volume = volume;
