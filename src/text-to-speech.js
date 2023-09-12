@@ -30,7 +30,7 @@ const TextToSpeech = ({ text, language}) => {
     if (isPaused) {
       synth.resume();
     } else {
-      const v = voices.find((element) => element.voiceURI === "Yelda");
+      const v = voices.find((element) => element.lang === "tr-TR");
       utterance.voice = v;
       utterance.pitch = pitch;
       utterance.rate = rate;
@@ -44,7 +44,7 @@ const TextToSpeech = ({ text, language}) => {
   const handlePlayUK = () => {
 
     const synth = window.speechSynthesis;
-    const v = voices.find((element) => element.voiceURI === "Google UK English Female");
+    const v = voices.find((element) => element.lang === "en-GB");
 
     if (isPaused) {
       synth.resume();
@@ -62,7 +62,7 @@ const TextToSpeech = ({ text, language}) => {
   const handlePlayUS = () => {
 
     const synth = window.speechSynthesis;
-    const v = voices.find((element) => element.voiceURI === "Google US English");
+    const v = voices.find((element) => element.lang === "en-US");
 
     if (isPaused) {
       synth.resume();
